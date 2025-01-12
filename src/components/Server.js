@@ -77,10 +77,26 @@ class Server extends Router {
                 this.#options.key_file_name = to_forward_slashes(path.resolve(key_file_name));
 
                 // Create an SSL app with the provided SSL options
-                this.#uws_instance = uWebSockets.SSLApp(this.#options);
+                this.#uws_instance = uWebSockets.SSLApp({
+                    key_file_name: this.#options.key_file_name,
+                    cert_file_name: this.#options.cert_file_name,
+                    ca_file_name: this.#options.ca_file_name,
+                    passphrase: this.#options.passphrase,
+                    dh_params_file_name: this.#options.dh_params_file_name,
+                    ssl_prefer_low_memory_usage: this.#options.ssl_prefer_low_memory_usage,
+                    ssl_ciphers: this.#options.ssl_ciphers //'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH',
+                });
             } else {
                 // Create a non-SSL app since no SSL options were provided
-                this.#uws_instance = uWebSockets.App(this.#options);
+                this.#uws_instance = uWebSockets.App({
+                    key_file_name: this.#options.key_file_name,
+                    cert_file_name: this.#options.cert_file_name,
+                    ca_file_name: this.#options.ca_file_name,
+                    passphrase: this.#options.passphrase,
+                    dh_params_file_name: this.#options.dh_params_file_name,
+                    ssl_prefer_low_memory_usage: this.#options.ssl_prefer_low_memory_usage,
+                    ssl_ciphers: this.#options.ssl_ciphers //'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH',
+                }); //this.#options);
             }
         } catch (error) {
             // Convert all the options to string values for logging purposes

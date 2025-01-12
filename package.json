@@ -42,8 +42,8 @@
     "homepage": "https://github.com/kartikk221/hyper-express#readme",
     "dependencies": {
         "busboy": "^1.6.0",
-        "cookie": "^1.0.1",
-        "cookie-signature": "^1.2.1",
+        "cookie": "^1.0.2",
+        "cookie-signature": "^1.2.2",
         "mime-types": "^2.1.35",
         "negotiator": "^1.0.0",
         "range-parser": "^1.2.1",
@@ -54,7 +54,7 @@
     "devDependencies": {
         "@types/busboy": "^1.5.4",
         "@types/express": "^5.0.0",
-        "@types/node": "^22.7.5",
-        "typescript": "^5.6.3"
+        "@types/node": "^22.10.5",
+        "typescript": "^5.7.3"
     }
 }
